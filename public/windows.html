@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" charset="utf-8">
+<title>First Media Query</title>
+<!-- <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css"> -->
+<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap-darkly.min.css">
+<link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap-image-gallery.min.css">
+<link rel="stylesheet" href="http://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css" />
+<style type="text/css">
+
+/*default styles*/
+html,body {
+	width: 100%;
+	height: 100%;
+}
+
+#main {
+	width: 100%;
+	overflow: 'y';
+	height: 640px;
+}
+
+
+#thumbnail-container {
+	display: none;
+}
+
+#image-block {
+	margin-top: 8px;
+	float: left;
+	padding-left: 0px;
+	margin-bottom: 40px;
+}
+
+#icon-block {
+	display: none;
+	width: 100px;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+#menu-block {
+	display: none;
+	margin-top: 8px;
+	-webkit-transition: all 0.3s linear;
+   -moz-transition: all 0.3s linear;
+   -o-transition: all 0.3s linear;
+   -ms-transition: all 0.3s linear;
+   transition: all 0.3s linear;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+	font-family: myFont;
+	font-weight: bold;
+}
+
+#menu-block ul {
+	width:200px;
+	list-style-type: none;
+}
+
+#menu-block li {
+	padding: 5px 10px 5px 10px;
+}
+
+.page {
+	padding-top: 10px;
+}
+
+ ul {
+	list-style-type: none;
+}
+
+ ul li {
+	display: inline;
+	margin-left: 30px;
+}
+
+#container {
+	display: block;
+}
+
+#carousel-example-generic {
+	height: 450px;
+}
+
+#carousel-example-generic .carousel-inner .item img {
+	height: 450px;
+}
+
+#jumbotron {
+	padding-top: 20px;
+}
+
+#jumbotron-container {
+	display: none;
+	padding-top: 0px;
+}
+
+#jumbotron-container .row {
+	margin-left: -105px;
+	height: 400px;
+	width:100%;
+}
+
+@font-face {
+font-family:myFont;
+src:url('Sansation_Light.ttf');
+font-weight:100;
+}
+
+#carousel-container .panel-default {
+	border: 0px solid white;
+}
+
+#carousel-container .panel-header {
+	text-align: center;
+	font-family: myFont;
+	font-size: 1.8em;
+	/*color: #083047;*/
+	color: white;
+}
+
+#banner-block {
+	margin-top: 30px;
+	margin-left: -160px;
+}
+
+#banner-block a {
+	/*color: #083047;*/
+	color: white;
+}
+
+#third-page #header, #footer {
+	text-align: center;
+	font-family: myFont;
+	font-size: 1.8em;
+	/*color: #083047;*/
+	color: white;
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+
+#third-page {
+	display: none;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#third-page .thumbnail img {
+	height: 200px;
+	width: 300px;
+}
+
+/*#container div {
+	display: inline-block;
+	width: 50%;
+	margin-top: 10px;
+	float: left;
+	margin-left: 0px;
+	text-align: right;
+}
+*/
+/*#first {
+	background: yellow;
+}
+
+#second {
+	background: orange;
+}*/
+/* media queries*/
+@media only screen and (max-width: 480px) {
+
+
+	#container div {
+		text-align: center;
+	}
+	#first {
+		background: CornflowerBlue;
+	}
+	#second {
+		background: DarkTurquoise;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+		#icon-block {
+		display: block;
+	}
+
+	.page {
+		display: none;
+	}
+	#thumbnail-container {
+		display: block;
+	}
+	#carousel-container {
+		display: none;
+	}
+
+}
+
+
+
+</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-image-gallery.min.js"></script>
+<script type="text/javascript" src="js/jquery.velocity.min.js"></script>
+<script type="text/javascript" src="js/velocity.ui.js"></script>
+<script src="http://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="container" id="content-container">
+<section class="page well">
+<ul>
+<li><a href="#">HEADER</a></li>
+<li><a href="#">NAV</a></li>
+<li><a href="#">MAIN CONTENT</a></li>
+<li><a href="#">SIDBAR</a></li>
+<li><a href="#">FOOTER</a></li>
+</ul>
+</section>
+
+<div id="icon-block">
+<img src="menu.png" id="icon" width="80px" height="80px" alt="no image">
+</div>
+<div id="menu-block" class="well">
+<ul>
+<li><a href="#">HEADER</a></li>
+<li><a href="#">NAV</a></li>
+<li><a href="#">MAIN CONTENT</a></li>
+<li><a href="#">SIDEBAR</a></li>
+<li><a href="#">FOOTER</a></li>
+</ul>
+</div>
+
+<!-- <div id="container">
+<div id="first">
+first block
+</div>
+<div id="second">
+second block
+</div>
+</div> -->
+
+<div id="image-block">
+
+<div class="row" id="carousel-container">
+<div class="panel panel-default">
+<div class="panel-header">
+	<span>Welcome to the awesome carousel of Bootstrap</span>
+</div>
+<div class="panel-body">
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="surface9.jpg" alt="images">
+      <div class="carousel-caption">
+        <h3></h3>
+      </div>
+    </div>
+    
+    <div class="item">
+      <img src="surface4.jpg" alt="images">
+      <div class="carousel-caption">
+        <h3>Microsoft Surface</h3>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="surface5.jpg" alt="images">
+      <div class="carousel-caption">
+        <h3></h3>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+</div>
+</div>
+
+<div class="row" id="banner-block">
+	<div class="col-md-4">
+	<ul>
+		<li>
+		<a href="#">
+			<img src="http://c.s-microsoft.com/en-in/CMSImages/Azure_WebApps_0612_420x210_EN_US.PNG.png?version=339dd67d-df93-462e-4e4e-862638a5e7a2" width="420" height="210">
+		</a>
+		</li>
+		<li>
+		<a href="#">Create a web app in seconds. Try Azure for free.</a>
+		</li>
+	</ul>
+	</div>
+	<div class="col-md-4">
+	<ul>
+		<li>
+		<a href="#">
+			<img src="http://c.s-microsoft.com/en-in/CMSImages/Dyn_CRMDial_1216_420x210_EN_US.png?version=79301827-8b07-d865-5a08-df0d37560ac6" width="420" height="210">
+		</a>
+		</li>
+		<li>
+		<a href="#">Try the newest release of Microsoft Dynamics CRM.</a>
+		</li>
+	</ul>
+	</div>
+	<div class="col-md-4">
+	<ul>
+		<li>
+		<a href="#">
+			<img src="http://c.s-microsoft.com/en-in/CMSImages/Win81_Meet_1018_420x210_ROW.jpg?version=e57d8fbd-91d7-7309-c86c-28046111d9aa" width="420" height="210">
+		</a>
+		</li>
+		<li>
+		<a href="#">The new Windows is here</a>
+		</li>
+	</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="panel panel-default" id="thumbnail-container">
+<div class="panel-body">
+	<div class="row">
+		<div class="col-md-3">
+		<a href="#" class="thumbnail">
+		<img src="surface7.jpg" alt="thumbnail image">
+		</a>
+		</div>
+		<div class="col-md-3">
+		<a href="#" class="thumbnail">
+		<img src="surface8.jpg" alt="thumbnail image">
+		</a>
+		</div>
+		<div class="col-md-3">
+		<a href="#" class="thumbnail">
+		<img src="surface1.jpg" alt="thumbnail image">
+		</a>
+		</div>
+		<div class="col-md-3">
+		<a href="#" class="thumbnail">
+		<img src="surface2.jpg" alt="thumbnail image">
+		</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+		<a href="#" class="thumbnail">
+		<img src="xbox2.jpg" alt="thumbnail image">
+		</a>
+		</div>
+		<div class="col-md-3">
+		<a href="#" class="thumbnail">
+		<img src="windows1.jpg" alt="thumbnail image">
+		</a>
+		</div>
+		<div class="col-md-3">
+		<a href="#" class="thumbnail">
+		<img src="windows2.jpg" alt="thumbnail image">
+		</a>
+		</div>
+		<div class="col-md-3">
+		<a href="#" class="thumbnail">
+		<img src="xbox1.jpg" alt="thumbnail image">
+		</a>
+		</div>
+	</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="container" id="jumbotron-container">
+<div class="row">
+	<img src="http://c.s-microsoft.com/en-in/CMSImages/Ofc365_EvergreenBG_0602_1600x540_EN_US.png?version=c21a0f06-540f-621d-38a5-1956c75eaf94" alt="no image">
+</div>
+<div class="jumbotron">
+<h1>Jumbotron Header</h1>
+<p>This would be a brief introduction to Bootstrap design patterns.</p>
+<p><a id="link-third" href="#" class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+</div>
+</div>
+
+<div class="container" id="third-page">
+	<div id="header">
+		<span>Stay tuned with me coz...the awesomeness continues</span>
+	</div>
+
+	<div class="row">
+	<div class="col-md-3">
+	<div class="thumbnail">
+	<img src="surface5.jpg">
+	<div class="caption">
+	<p><a href="windows1.jpg" class="btn btn-primary" role="button" data-gallery>Read more</a></p>
+	</div>
+	</div>
+	</div>
+	<div class="col-md-3">
+	<div class="thumbnail">
+	<img src="surface6.jpg">
+	<div class="caption">
+	<p><a href="windows2.jpg" class="btn btn-primary" role="button" data-gallery>Read more</a></p>
+	</div>
+	</div>
+	</div>
+	<div class="col-md-3">
+	<div class="thumbnail">
+	<img src="surface7.jpg">
+	<div class="caption">
+	<p><a href="windows3.jpg" class="btn btn-primary" role="button" data-gallery>Read more</a></p>
+	</div>
+	</div>
+	</div>
+	<div class="col-md-3">
+	<div class="thumbnail">
+	<img src="surface8.jpg">
+	<div class="caption">
+	<p><a href="windows4.jpg" class="btn btn-primary" role="button" data-gallery>Read more</a></p>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div id="footer">
+	Enough of this Windows shit, lets see some Open Source awesomeness
+	</div>
+</div>
+
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides">
+    </div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+	
+	var contentContainer = $("#content-container");
+
+$("#icon-block").mouseenter(function() {
+	$("#menu-block").fadeIn("fast");
+});
+
+$("#icon-block").mouseleave(function() {
+	$("#menu-block").fadeOut("fast");
+});
+
+
+$(".page").on("mousedown",function(e) {
+	//$("#content-container").slideUp("slow");
+	$("#content-container").velocity("transition.flipBounceYOut", 1250);
+	$("#jumbotron-container").css("display","block");
+});
+
+$("#jumbotron-container .row").on("mousedown",function(e) {
+	$("#jumbotron-container").velocity("transition.flipBounceYOut", 1250);
+	//$("#jumbotron-container").slideUp("slow");
+	 //$("#content-container").slideDown("slow");
+	 $("#content-container").velocity("transition.flipBounceYIn", 1250);
+	
+});
+
+$("#link-third").on("click", function(e) {
+	$("#jumbotron-container").velocity("transition.flipBounceXOut", 1250);
+	//$("#jumbotron-container").animate({ width: 'hide' }, "slow");
+	$("#third-page").velocity("transition.slideUpIn", 1250);
+	//$("#third-page").css("display","block");
+});
+
+$("#third-page #header").on("mousedown",function() {
+	$("#content-container").slideDown("slow").delay(100);
+	//$("#content-container #image-block").fadeIn("slow");
+	$("#third-page").slideUp("slow");
+	//$("#third-page").delay(100).animate({ width: 'hide' }, "slow");
+	
+});
+
+$(document).ready(function() {
+	$("#main").mCustomScrollbar({
+		theme: 'dark-thin',
+		callbacks: {
+			onTotalScroll: function() {
+				console.log('scroll completed');
+			},
+			whileScrolling: function() {
+				console.log('scrolling');
+			}
+		}
+	});
+});
+
+
+
+</script>
+
+</body>
+</html>

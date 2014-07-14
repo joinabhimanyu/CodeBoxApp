@@ -7,6 +7,10 @@ app.get('/', function(request, response) {
    response.sendfile('/public/index.html'); 
 });
 
+app.get('/windows',function(request, response) {
+   response.sendfile('/public/windows.html'); 
+});
+
 app.get('/Hello', function(request, response) {
     response.send('Hello World from CodeBox');
 });
