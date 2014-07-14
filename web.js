@@ -4,11 +4,11 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.logger());
 
 app.get('/', function(request, response) {
-   response.sendfile('/public/index.html'); 
+   response.sendfile(__dirname + '/public/index.html'); 
 });
 
 app.get('/windows',function(request, response) {
-   response.sendfile('/public/windows.html'); 
+   response.sendfile(__dirname + '/public/windows.html'); 
 });
 
 app.get('/Hello', function(request, response) {
